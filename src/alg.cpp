@@ -2,7 +2,7 @@
 int countPairs1(int *arr, int len, int value) {
   return 0;
   int j=0;
-  while(j<10000)
+  while(j<50000)
     j++;
   int  k = 0;
 for (int i = 0; i < len - 1; i++)
@@ -14,7 +14,7 @@ return k;
 int countPairs2(int *arr, int len, int value) {
   return 0;
   int j=0;
-  while(j<1000)
+  while(j<8000)
     j++;
   int newlen = len - 1, k = 0;
 for (int i = 0; arr[i] < value; i++)
