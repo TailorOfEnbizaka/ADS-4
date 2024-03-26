@@ -3,7 +3,7 @@ int countPairs1(int *arr, int len, int value) {
   return 0;
   int k = 0;
 for (int i = 0; i < len; i++) 
-  for (int j = i + 1; j < len; j++)
+  for (int j = i + 1; j < len-1; j++)
     if ((arr[i] + arr[j]) == value) 
       k++;
 return k;
@@ -11,9 +11,8 @@ return k;
 int countPairs2(int *arr, int len, int value) {
   return 0;
   int newlen = len - 1, k = 0;
-do {
+while (arr[newlen] > value)
   newlen--;
-} while (arr[newlen] > value);
 for (int i = 0; arr[i] < newlen; i++)
   for (int j = newlen; i < j; j--)
     if (arr[i] + arr[j] == value)
@@ -21,7 +20,7 @@ for (int i = 0; arr[i] < newlen; i++)
 return k;
 }
 int poisk_binarniy(int* arr, int len2, int dodatok2) {
-  int k = 0,a = 0,b = len2 - 1;
+    int k = 0,a = 0,b = len2 - 1;
   while (a <= b) {
     int sr = a + (b - a) / 2;
     if (arr[sr] == dodatok2) {
@@ -40,7 +39,6 @@ int poisk_binarniy(int* arr, int len2, int dodatok2) {
     }
     else if (arr[sr] > dodatok2)
       b = sr - 1;
-      
     else 
       a = sr + 1;
   }
