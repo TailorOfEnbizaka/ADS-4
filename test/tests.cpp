@@ -61,6 +61,7 @@ TEST(lab2, test3) {
     t1 = end1 - begin1;
     t2 = end2 - begin2;
     t3 = end3 - begin3;
+    std::cout<<"t1"<<t1<<endl;
     EXPECT_TRUE((t1 > t2) && (t1 > t3) && (t2 > t3));
     delete[] arr;
 }
