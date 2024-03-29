@@ -31,7 +31,7 @@ int countPairs2(int* arr, int len, int value) {
   return k;
 }
 int countPairs3(int* arr, int len, int value) {
-  //return 0;
+  return 0;
   int k = 0;
   for (int i = 0; i < len - 1; i++) {
     int a = i;
