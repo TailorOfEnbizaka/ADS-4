@@ -57,6 +57,7 @@ int poisk_binarniy(int* arr, int len2, int dodatok2) {
   return k;
 }
 int countPairs3(int* arr, int len, int value) {
+  return 0;
   int k = 0;
   for (int i = 0; i < len; i++) {
     int dodatok2 = value - arr[i];
