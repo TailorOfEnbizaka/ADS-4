@@ -4,14 +4,14 @@ int countPairs1(int* arr, int size, int value) {
     for (int i = 0; i < size - 1; i++) {
       for (int j = i + 1; j < size; j++) {
         if ((arr[i] + arr[j]) == value) {
-          k ++;
+          k++;
         }
       }
     }
     return k;
   }
 int countPairs2(int* arr, int len, int value) {
-      int k = 0,b = len - 1;
+      int k = 0, b = len - 1;
       while (arr[b] > value) {
         b -= 1;
       }
@@ -25,7 +25,6 @@ int countPairs2(int* arr, int len, int value) {
       }
       return k;
     }
-  
   int binpoisk(int* arr, int size, int value) {
         int b = size - 1;
         int k = 0;
@@ -48,14 +47,12 @@ int countPairs2(int* arr, int len, int value) {
           }
           if (arr[sr] < value) {
             a = sr + 1;
-          }
-          else {
+          } else {
             b = sr - 1;
           }
         }
         return k;
       }
-
       int countPairs3(int* arr, int len, int value) {
         int k = 0;
         for (int i = 0; i < len; i++) {
