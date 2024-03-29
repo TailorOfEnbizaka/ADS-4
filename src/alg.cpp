@@ -1,66 +1,66 @@
 // Copyright 2021 NNTU-CS
-int countPairs1(int* arr, int len, int value) {
-  return 0;
-  int k = 0;
-  for (int i = 0; i < len; i++) {
-    for (int j = i + 1; j < len; j++) {
-      if ((arr[i] + arr[j] == value) && (arr[i] >= 0 && arr[j] >= 0)) {
-        k++;
+int countPairs1(int* arr, int size, int value) {
+    int k = 0;
+    for (int i = 0; i < size - 1; i++) {
+      for (int j = i + 1; j < size; j++) {
+        if ((arr[i] + arr[j]) == value) {
+          k ++;
+        }
       }
     }
+    return k;
   }
-  return k;
-}
 int countPairs2(int* arr, int len, int value) {
-  return 0;
-  int k = 0, j=0;
-  int newlen = len - 1;
-  while(j<25000)
-    j++;
-  while (arr[newlen] > value) {
-    newlen--;
-  }
-  for (int i = 0; i < newlen; i++) {
-    for (int j = newlen; j > i; j--) {
-      if ((arr[i] + arr[j] == value) && (arr[i] >= 0 && arr[j] >= 0)) {
-        k++;
+      int k = 0,b = len - 1;
+      while (arr[b] > value) {
+        b -= 1;
       }
-      else if (arr[i] + arr[j] < value) {
-        break;
-      }
-    }
-  }
-  return k;
-}
-int countPairs3(int* arr, int len, int value) {
-  return 0;
-  int k = 0;
-  for (int i = 0; i < len - 1; i++) {
-    int a = i;
-    int b = len;
-    while (a < b - 1) {
-      int sr = (b + a) / 2;
-      if (arr[i] + arr[sr] == value) {
-        k++;
-        int j = sr + 1;
-        while ((arr[i] + arr[j] == value) && (j < b)) {
-          k++;
-          j++;
+      for (int i = 0; i < b; i++) {
+        for (int j = b; j > i; j--) {
+          int val = arr[i] + arr[j];
+          if (val == value) {
+            k++;
+          }
         }
-        j = sr - 1;
-        while ((arr[i] + arr[j] == value) && (j > a)) {
-          k++;
-          j--;
-        }
-        break;
       }
-      else if (arr[i] + arr[sr] > value) {
-        b = sr;
-      }
-      else {
-        a = sr;
-      }
+      return k;
     }
-  }
-  return k;
-}
+  
+  int binpoisk(int* arr, int size, int value) {
+        int b = size - 1;
+        int k = 0;
+        int a = 0;
+        while (a <= b) {
+          int sr = a + (b - a) / 2;
+          if (arr[sr] == value) {
+            k++;
+            a = sr - 1;
+            b = sr + 1;
+            while (a >= 0 && arr[a] == value) {
+              k++;
+              a--;
+            }
+            while (b < size && arr[b] == value) {
+              k++;
+              b++;
+            }
+            return k;
+          }
+          if (arr[sr] < value) {
+            a = sr + 1;
+          }
+          else {
+            b = sr - 1;
+          }
+        }
+        return k;
+      }
+
+      int countPairs3(int* arr, int len, int value) {
+        int k = 0;
+        for (int i = 0; i < len; i++) {
+          int dodatok = value - arr[i];
+          k += binpoisk(&arr[i + 1], len - i - 1, dodatok);
+        }
+        return k;
+      }
